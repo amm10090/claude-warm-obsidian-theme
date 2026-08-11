@@ -419,9 +419,9 @@ body {
 }
 
 .callout {
-  border: 1px solid rgba(var(--callout-color), 0.22);
+  border: 1px solid color-mix(in srgb, var(--callout-color) 22%, transparent);
   border-radius: var(--radius-xl);
-  background-color: rgba(var(--callout-color), 0.08);
+  background-color: color-mix(in srgb, var(--callout-color) 8%, transparent);
   box-shadow: var(--cw-shadow-soft);
 }
 
