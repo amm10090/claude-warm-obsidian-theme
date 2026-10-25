@@ -429,13 +429,18 @@ body {
   color: var(--text-normal);
 }
 
-.metadata-container,
-.properties-container {
-  background-color: var(--background-primary-alt);
-  border: 1px solid var(--background-modifier-border);
-  border-radius: var(--radius-xl);
+/* Style properties through Obsidian's metadata variables so its own layout rules (sidebar, narrow panes) keep working. */
+.metadata-container {
+  --metadata-background: var(--background-primary-alt);
+  --metadata-border-width: 1px;
+  --metadata-border-radius: var(--radius-xl);
+  --metadata-padding: 8px 10px;
   box-shadow: var(--cw-shadow-soft);
-  padding: 8px 10px;
+}
+
+/* Sidebars are narrow: compact card padding so values keep their room. */
+.workspace > .workspace-split:not(.mod-root) .metadata-container {
+  --metadata-padding: 4px;
 }
 
 .modal,
@@ -457,12 +462,6 @@ body {
   background-color: var(--background-modifier-hover);
 }
 
-input[type="text"],
-input[type="search"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-textarea,
 select,
 .dropdown {
   background-color: var(--background-modifier-form-field);
@@ -471,12 +470,6 @@ select,
   color: var(--text-normal);
 }
 
-input[type="text"]:focus,
-input[type="search"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="number"]:focus,
-textarea:focus,
 select:focus,
 .dropdown:focus {
   border-color: var(--background-modifier-border-focus);
