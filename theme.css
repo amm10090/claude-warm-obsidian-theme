@@ -285,6 +285,12 @@ body {
   background-color: var(--background-primary);
 }
 
+/* Older Pixel Banner versions draw banners behind these note-view backgrounds. */
+.view-content.pixel-banner > .markdown-source-view,
+.view-content.pixel-banner > .markdown-reading-view {
+  background-color: transparent;
+}
+
 .workspace-split.mod-left-split,
 .workspace-split.mod-right-split,
 .mod-sidedock .workspace-leaf-content,
