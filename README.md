@@ -35,6 +35,7 @@ Claude Warm is inspired by Claude's calm, low-contrast interface: comfortable en
 - Warm backgrounds with restrained contrast for long-form reading and editing
 - Warm-gold accents for links, tags, selections, and focused controls
 - Softer sidebars, tabs, menus, modals, tables, callouts, and code blocks
+- Alternate task checkboxes for the community status syntax, in Live Preview and reading view
 - No remote fonts or external assets in the theme CSS
 
 ## Install
@@ -61,6 +62,49 @@ To install from Obsidian:
 2. Copy `manifest.json` and `theme.css` into that folder.
 3. Restart Obsidian.
 4. Go to `Settings -> Appearance -> Themes` and choose `Claude Warm`.
+
+## Alternate checkboxes
+
+Task markers other than a blank box or `x` pick up the community alternate-checkbox syntax used by Minimal and the [Alternative Checkboxes Reference Set](https://github.com/damiankorcz/Alternative-Checkboxes-Reference-Set). The marks are original drawings in the Claude Warm palette. The theme does not include Lucide, Heroicons, or other third-party icon artwork.
+
+Reading view and Live Preview both show the mark. Source mode keeps the characters as typed. `- [ ]`, `- [x]`, and `- [X]` stay the theme's normal checkbox.
+
+| Syntax | Meaning |
+| --- | --- |
+| `- [ ]` | To-do |
+| `- [x]`, `- [X]` | Done |
+| `- [/]` | Incomplete |
+| `- [-]` | Canceled |
+| `- [>]` | Forwarded |
+| `- [<]` | Scheduling |
+| `- [?]` | Question |
+| `- [!]` | Important |
+| `- [*]` | Star |
+| `- ["]` | Quote |
+| `- [l]` | Location |
+| `- [b]` | Bookmark |
+| `- [i]` | Information |
+| `- [S]` | Savings |
+| `- [I]` | Idea |
+| `- [p]` | Pros |
+| `- [c]` | Cons |
+| `- [f]` | Fire |
+| `- [k]` | Key |
+| `- [w]` | Win |
+| `- [u]` | Up |
+| `- [d]` | Down |
+
+Canceled tasks are muted and struck through. The other statuses keep normal task text and change only the checkbox.
+
+These rules are wrapped in a style query on `--theme-alternative-checkboxes`. They apply while that variable is `enable` (the theme default). The Reference Set snippet sets it to `disable`, so that snippet still replaces the built-in marks. A snippet of your own can do the same:
+
+```css
+body {
+  --theme-alternative-checkboxes: disable;
+}
+```
+
+The style query needs a current Obsidian installer. On an older WebView the extra statuses fall back to the normal checked checkbox. Plain to-do and done checkboxes do not depend on it.
 
 ## Palette
 

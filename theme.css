@@ -19,6 +19,8 @@ body {
   --input-radius: 8px;
   --tab-radius-active: 8px 8px 0 0;
   --checkbox-radius: 4px;
+  /* Reference Set snippets set this to "disable" so their own marks can take over. */
+  --theme-alternative-checkboxes: enable;
 
   --bold-color: var(--text-normal);
   --italic-color: var(--text-normal);
@@ -154,6 +156,7 @@ body {
   --accent-h: 38;
   --accent-s: 68%;
   --accent-l: 69%;
+  --cw-task-accent: var(--text-accent);
 }
 
 .theme-light {
@@ -273,6 +276,8 @@ body {
   --accent-h: 36;
   --accent-s: 71%;
   --accent-l: 42%;
+  /* Darker than the link accent so 16px marks stay readable on ivory. */
+  --cw-task-accent: var(--color-accent-2);
 }
 
 
@@ -505,6 +510,471 @@ input[type="checkbox"] {
   --checkbox-border-color: var(--background-modifier-border-hover);
   --checkbox-border-color-hover: var(--interactive-accent);
 }
+
+/* cw-alternate-checkboxes:start
+   Community status characters (Minimal / Alternative Checkboxes Reference Set).
+   Marks are original. Plain space, x, and X checkboxes are not matched here.
+*/
+@container style(--theme-alternative-checkboxes: enable) {
+  /* [/] Incomplete */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="/"] {
+    --cw-task-ink: var(--cw-task-accent);
+    --cw-task-border: var(--cw-task-accent);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4.2%2012.4%2011.8%203.6%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [-] Canceled */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="-"] {
+    --cw-task-ink: var(--text-faint);
+    --cw-task-border: var(--text-faint);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M3.2%208h9.6%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [>] Forwarded */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task=">"] {
+    --cw-task-ink: var(--text-muted);
+    --cw-task-border: var(--text-muted);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5.6%203.4%2010.6%208%205.6%2012.6%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [<] Scheduling */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="<"] {
+    --cw-task-ink: var(--cw-task-accent);
+    --cw-task-border: var(--cw-task-accent);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Crect%20x%3D%222.5%22%20y%3D%223.3%22%20width%3D%2211%22%20height%3D%2210.2%22%20rx%3D%221.5%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M2.5%206.6h11M5.3%202.1v2.3M10.7%202.1v2.3%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [?] Question */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="?"] {
+    --cw-task-ink: var(--cw-task-accent);
+    --cw-task-border: var(--cw-task-accent);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M6%206.1a2.15%202.15%200%200%201%204.2.75c0%201.45-2.15%201.7-2.15%203.15%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%228.05%22%20cy%3D%2212.55%22%20r%3D%220.95%22%20fill%3D%22%23000%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [!] Important */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="!"] {
+    --cw-task-ink: rgb(var(--color-orange-rgb));
+    --cw-task-border: rgb(var(--color-orange-rgb));
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%203v6.3%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%228%22%20cy%3D%2212.45%22%20r%3D%221.05%22%20fill%3D%22%23000%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [*] Star */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="*"] {
+    --cw-task-ink: var(--cw-task-accent);
+    --cw-task-border: var(--cw-task-accent);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpolygon%20fill%3D%22%23000%22%20points%3D%228%2C1.7%209.5%2C5.9%2014%2C6.1%2010.4%2C8.8%2011.6%2C13.1%208%2C10.5%204.4%2C13.1%205.6%2C8.8%202%2C6.1%206.5%2C5.9%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [\"] Quote */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="\""] {
+    --cw-task-ink: var(--text-muted);
+    --cw-task-border: var(--text-muted);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M3.5%204.6h1.8v4.3c0%201.05-.65%201.7-1.75%201.9v-1.35c.45-.08.65-.4.65-.85H3.5V4.6zm5.5%200h1.8v4.3c0%201.05-.65%201.7-1.75%201.9v-1.35c.45-.08.65-.4.65-.85H9V4.6z%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [l] Location */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="l"] {
+    --cw-task-ink: rgb(var(--color-blue-rgb));
+    --cw-task-border: rgb(var(--color-blue-rgb));
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2014.4s4.15-4.15%204.15-7.15a4.15%204.15%200%201%200-8.3%200C3.85%2010.25%208%2014.4%208%2014.4z%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%228%22%20cy%3D%227.15%22%20r%3D%221.35%22%20fill%3D%22%23000%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [b] Bookmark */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="b"] {
+    --cw-task-ink: var(--cw-task-accent);
+    --cw-task-border: var(--cw-task-accent);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4.1%202.3h7.8v11.4L8%2011%204.1%2013.7V2.3z%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [i] Information */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="i"] {
+    --cw-task-ink: rgb(var(--color-blue-rgb));
+    --cw-task-border: rgb(var(--color-blue-rgb));
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Ccircle%20cx%3D%228%22%20cy%3D%223.7%22%20r%3D%221.15%22%20fill%3D%22%23000%22%2F%3E%3Cpath%20d%3D%22M6.7%206.3h2.6V13H6.7z%22%20fill%3D%22%23000%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [S] Savings */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="S"] {
+    --cw-task-ink: var(--text-success);
+    --cw-task-border: var(--text-success);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M10.5%204.3c-.45-1.15-1.9-1.7-3.2-1.25-1.25.4-1.9%201.2-1.75%202.2.25%201.7%202.5%201.85%203.5%202.3%201.15.5%201.85%201.15%201.65%202.35-.25%201.25-1.55%201.9-3.1%201.65-1.35-.2-2.3-.85-2.7-1.9M8%202.15v11.7%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.45%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [I] Idea */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="I"] {
+    --cw-task-ink: var(--cw-task-accent);
+    --cw-task-border: var(--cw-task-accent);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%201.9a3.35%203.35%200%200%200-1.9%206.1c.35.35.55.8.55%201.3h2.7c0-.5.2-.95.55-1.3A3.35%203.35%200%200%200%208%201.9z%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.45%22%2F%3E%3Cpath%20d%3D%22M6.55%2010.7h2.9M6.9%2012.15h2.2M7.25%2013.5h1.5%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [p] Pros */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="p"] {
+    --cw-task-ink: var(--text-success);
+    --cw-task-border: var(--text-success);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M6.5%207h1.7l.75-2.7c.18-.7.9-1.05%201.5-.7.62.28.82%201.05.55%201.65L10.4%207h2.15c.72%200%201.25.62%201.15%201.32l-.5%203.7c-.1.62-.68%201.08-1.32%201.08H6.5V7z%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.3%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M3.3%207h2.3V13.1H3.3z%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.3%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [c] Cons */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="c"] {
+    --cw-task-ink: var(--text-error);
+    --cw-task-border: var(--text-error);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cg%20transform%3D%22translate(0%2016)%20scale(1%20-1)%22%3E%3Cpath%20d%3D%22M6.5%207h1.7l.75-2.7c.18-.7.9-1.05%201.5-.7.62.28.82%201.05.55%201.65L10.4%207h2.15c.72%200%201.25.62%201.15%201.32l-.5%203.7c-.1.62-.68%201.08-1.32%201.08H6.5V7z%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.3%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M3.3%207h2.3V13.1H3.3z%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.3%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+
+  /* [f] Fire */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="f"] {
+    --cw-task-ink: rgb(var(--color-orange-rgb));
+    --cw-task-border: rgb(var(--color-orange-rgb));
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8.1%201.7c.25%202-.7%202.9-1.55%204C5.3%207.15%204.7%208.4%204.7%2010.05a3.3%203.3%200%200%200%206.6%200c0-1.35-.55-2.3-1.2-3.1.15.85-.35%201.65-1.2%201.5.45-1.7.7-3.6-.8-6.75z%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.35%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [k] Key */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="k"] {
+    --cw-task-ink: var(--text-normal);
+    --cw-task-border: var(--text-normal);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Ccircle%20cx%3D%226.1%22%20cy%3D%226.3%22%20r%3D%222.55%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M8.2%207.7%2013.3%2012.8M10.9%2010.4l1.8%201.8%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [w] Win */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="w"] {
+    --cw-task-ink: var(--cw-task-accent);
+    --cw-task-border: var(--cw-task-accent);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Ccircle%20cx%3D%228%22%20cy%3D%226%22%20r%3D%223.05%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M5.7%208.5%204.5%2013.7%208%2011.6%2011.5%2013.7%2010.3%208.5%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [u] Up */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="u"] {
+    --cw-task-ink: var(--text-success);
+    --cw-task-border: var(--text-success);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2013.3V3.2M8%203.2%204%207.2M8%203.2l4%204%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* [d] Down */
+  :is(.HyperMD-task-line, li.task-list-item, input.task-list-item-checkbox)[data-task="d"] {
+    --cw-task-ink: var(--text-error);
+    --cw-task-border: var(--text-error);
+    --cw-task-mark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%202.7v10.1M8%2012.8%204%208.8M8%2012.8l4-4%22%20fill%3D%22none%22%20stroke%3D%22%23000%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  .HyperMD-task-line:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) input.task-list-item-checkbox,
+  li.task-list-item:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) > input.task-list-item-checkbox,
+  li.task-list-item:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) > p > input.task-list-item-checkbox {
+    --cw-task-fill: color-mix(in srgb, var(--cw-task-ink) 18%, transparent);
+    --checkbox-marker-color: transparent;
+    --checkbox-color: var(--cw-task-fill);
+    --checkbox-color-hover: var(--cw-task-fill);
+    --checkbox-border-color: var(--cw-task-border);
+    --checkbox-border-color-hover: var(--cw-task-ink);
+    background-color: var(--cw-task-fill);
+    border-color: var(--cw-task-border);
+    border-radius: var(--checkbox-radius);
+    color: var(--cw-task-ink);
+  }
+
+  .HyperMD-task-line:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) input.task-list-item-checkbox:hover,
+  li.task-list-item:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) > input.task-list-item-checkbox:hover,
+  li.task-list-item:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) > p > input.task-list-item-checkbox:hover {
+    border-color: var(--cw-task-ink);
+  }
+
+  .HyperMD-task-line:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) input.task-list-item-checkbox::after,
+  li.task-list-item:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) > input.task-list-item-checkbox::after,
+  li.task-list-item:is(
+    [data-task="/"],
+    [data-task="-"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) > p > input.task-list-item-checkbox::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    width: auto;
+    height: auto;
+    margin: 0;
+    border: 0;
+    transform: none;
+    background-color: var(--cw-task-ink);
+    -webkit-mask-image: var(--cw-task-mark);
+    mask-image: var(--cw-task-mark);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .markdown-preview-view li.task-list-item.is-checked:is(
+    [data-task="/"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ),
+  .markdown-rendered li.task-list-item.is-checked:is(
+    [data-task="/"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ),
+  .markdown-source-view.mod-cm6 .HyperMD-task-line:is(
+    [data-task="/"],
+    [data-task=">"],
+    [data-task="<"],
+    [data-task="?"],
+    [data-task="!"],
+    [data-task="*"],
+    [data-task="\""],
+    [data-task="l"],
+    [data-task="b"],
+    [data-task="i"],
+    [data-task="S"],
+    [data-task="I"],
+    [data-task="p"],
+    [data-task="c"],
+    [data-task="f"],
+    [data-task="k"],
+    [data-task="w"],
+    [data-task="u"],
+    [data-task="d"]
+  ) {
+    --checklist-done-decoration: none;
+    --checklist-done-color: var(--text-normal);
+    color: var(--text-normal);
+    text-decoration: none;
+  }
+
+  .markdown-preview-view li.task-list-item.is-checked[data-task="-"],
+  .markdown-rendered li.task-list-item.is-checked[data-task="-"],
+  .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"] {
+    --checklist-done-decoration: line-through;
+    --checklist-done-color: var(--text-faint);
+    color: var(--text-faint);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+}
+/* cw-alternate-checkboxes:end */
+
 
 .tag,
 a.tag {

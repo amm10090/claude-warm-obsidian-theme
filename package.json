@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate-theme.mjs",
+    "test": "node scripts/validate-theme.mjs && node scripts/test-alternate-checkboxes.mjs",
     "screenshot": "node scripts/generate-screenshot.mjs"
   }
 }
