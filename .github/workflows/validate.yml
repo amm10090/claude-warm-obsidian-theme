@@ -21,5 +21,8 @@ jobs:
       - name: Validate theme files
         run: node scripts/validate-theme.mjs
 
+      - name: Require Chrome for checkbox checks
+        run: command -v google-chrome
+
       - name: Test alternate checkboxes
         run: node scripts/test-alternate-checkboxes.mjs

@@ -86,8 +86,8 @@ console.log("Static alternate-checkbox checks passed.");
 
 const chrome = process.env.CHROME || "google-chrome";
 if (!commandExists(chrome)) {
-  console.log(`Browser checks skipped: ${chrome} is not available.`);
-  process.exit(0);
+  console.error(`Browser checks require ${chrome}. Install Chrome or set CHROME to a Chrome/Chromium binary.`);
+  process.exit(1);
 }
 
 const artifactDir = process.env.ALT_CHECKBOX_ARTIFACTS || "/opt/cursor/artifacts";
